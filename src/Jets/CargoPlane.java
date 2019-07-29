@@ -5,8 +5,8 @@ import java.lang.Object;
 public class CargoPlane extends Jet implements CargoCarrier{
 
 	//CONSTRUCTOR 
-	public CargoPlane(String model, int range, double speed, long price) {
-		super(model, range, speed, price);
+	public CargoPlane(String model,  double speed,int range, long price) {
+		super(model,  speed, range, price);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -4,20 +4,20 @@ public abstract class Jet {
 
 	private static final int MACH = 1234; //MACH IS Km/h
 	private String model;
-	private int range;
 	private double speed;
+	private int range;
 	private long price;
 	
 	
-	public Jet(String model, int range, double speed, long price) {
+	public Jet(String model,  double speed,int range, long price) {
 		super();
 		this.model = model;
-		this.range = range;
 		this.speed = speed;
+		this.range = range;
 		this.price = price;
 	}
 	public void fly() {  // User Story #6 done!
-		double temp = speed/range;
+		double temp = range/speed;
 	System.out.print(model+" ");
 	String strDouble = String.format("%.2f", temp);
 	System.out.println(strDouble+": time(hrs) the jet can fly until it runs out of fuel. \n");
@@ -95,6 +95,7 @@ public abstract class Jet {
 	
 	
 //ENCAPSulation Methods.  ***** BELOW ****************************************************	
+
 	/**
 	 * @return the model
 	 */
@@ -108,18 +109,6 @@ public abstract class Jet {
 		this.model = model;
 	}
 	/**
-	 * @return the range
-	 */
-	public int getRange() {
-		return range;
-	}
-	/**
-	 * @param range the range to set
-	 */
-	public void setRange(int range) {
-		this.range = range;
-	}
-	/**
 	 * @return the speed
 	 */
 	public double getSpeed() {
@@ -130,6 +119,18 @@ public abstract class Jet {
 	 */
 	public void setSpeed(double speed) {
 		this.speed = speed;
+	}
+	/**
+	 * @return the range
+	 */
+	public int getRange() {
+		return range;
+	}
+	/**
+	 * @param range the range to set
+	 */
+	public void setRange(int range) {
+		this.range = range;
 	}
 	/**
 	 * @return the price
@@ -146,10 +147,10 @@ public abstract class Jet {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Jet [model=").append(model).append(", range=").append(range).append(", speed=").append(speed)
+		builder.append("Jet [model=").append(model).append(", speed=").append(speed).append(", range=").append(range)
 				.append(", price=").append(price).append("]");
 		return builder.toString();
 	}
-	
+
 	
 }

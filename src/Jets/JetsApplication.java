@@ -48,10 +48,9 @@ public class JetsApplication {
 	public static int readUserInput(Scanner kb, int min, int max) { // long term goal is to check
 		int userNum = 0;
 		userNum = kb.nextInt();
-		while ((min > userNum) && (max < userNum)) {
+		while ((min > userNum) || (max < userNum)) {
 			System.out.println("Please select within " + min + " - " + max); // User Story #4 Requirements
 			userNum = kb.nextInt();
-
 		}
 		return userNum;
 
@@ -94,30 +93,32 @@ public class JetsApplication {
 		}
 		return quit;
 
-//********************************MENU METHODS*************************************************
 	}
+//********************************MENU METHODS*************************************************
 
-	private static void Dogfight(List jets) {
+	private static void Dogfight(List jets) { // User Story #8
 		// makes all fighter jets fight.
 
 		for (int i = 0; i < jets.size(); i++) {
-			
+			List fJ;
 			if (jets.get(i) instanceof FighterJet) {
-				System.out.println("Fighter jet "+i );
+				System.out.println(jets.get(i));
+				CombatReady.fight();
 			}
 		}
+		System.out.println("All fighter missions launched.");
 	}
 
-	private static void loadAllCargoJets(List<Set<String>> jets) {
+	private static void loadAllCargoJets(List jets) { // User Story #8
 
 		for (int i = 0; i < jets.size(); i++) {
-			
+			List fJ;
 			if (jets.get(i) instanceof CargoPlane) {
-				System.out.println("Cargo Jet "+i );
+				System.out.println(jets.get(i));
+				CargoCarrier.loadCargo();
 			}
 		}
-		
-		
+		System.out.println("All cargo planes loaded");
 	}
 
 	private static void viewJetWithLongestRange(List jets) { // User Story #7
@@ -151,7 +152,7 @@ public class JetsApplication {
 				maxRange = ((Jet) jets.get(i)).getSpeed();
 			}
 		} // for loop
-		System.out.println("\n\nThe Fastest Vehicle is: " + maxRange + " mph");
+		System.out.println("\nThe Fastest Vehicle is: "+maxRange +" MPH");
 		System.out.println(jets.get(maxIndex));
 
 	}

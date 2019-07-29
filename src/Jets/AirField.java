@@ -11,18 +11,8 @@ import java.util.TreeSet;
 
 public class AirField {
 
-/*	public static void main(String[] args) {
-        List <CargoPlane> jetslist = new ArrayList<CargoPlane>(); //User Story #2 requirements
-
-		
-        jetslist = populateAirfieldFromFile();	 //meets User Story #3 requirement from text
-		
-		}
-*/
 	public static List populateAirfieldFromFile() {
 		
- //works List jets = new ArrayList<>(); // collection arraylist of 4? categories?
-      
          List <Jet> jetslist = new ArrayList<Jet>(); // collection arraylist of 4? categories?
         
          try (BufferedReader bufIn = new BufferedReader(new FileReader("JetList.txt"))) {
@@ -37,16 +27,16 @@ public class AirField {
 						//public Jet(String model, int range, double speed, long price) {
 						//convert happens here.
 						String tempS = lineSplit[0]; 
-						int tempI = Integer.parseInt(lineSplit[1]);
-						double tempD = Double.parseDouble(lineSplit[2]);
-						long tempP = Long.parseLong(lineSplit[3]);
+						int tempRange = Integer.parseInt(lineSplit[2]); //speed
+						double tempSpeed = Double.parseDouble(lineSplit[1]);
+						long tempPrice = Long.parseLong(lineSplit[3]);
 						
 						if (lineSplit[4].equalsIgnoreCase("fighter")) {
 						// instanciate new jet
-						jetslist.add(new FighterJet(tempS, tempI,tempD, tempP));
+						jetslist.add(new FighterJet(tempS,tempSpeed,tempRange, tempPrice));
 						}
 						else {
-						jetslist.add(new CargoPlane(tempS, tempI,tempD, tempP));
+						jetslist.add(new CargoPlane(tempS,tempSpeed,tempRange, tempPrice));
 
 						}
 						
