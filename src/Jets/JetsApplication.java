@@ -14,24 +14,6 @@ public class JetsApplication {
 		Scanner kb = new Scanner(System.in);
 		launch(kb);
 
-//		Jet.FighterJet() fj = new Jet.FighterJet();
-		// will need
-
-		/*
-		 * List mylist = new ArrayList<>();
-		 * 
-		 * mylist.add("object 1");
-		 * 
-		 * Iterator iterator = mylist.iterator(); while (iterator.hasNext()){ Object
-		 * next = iterator.next();
-		 * 
-		 * 
-		 * }
-		 * 
-		 * for (int i = 0; i < mylist.size(); i++) {
-		 * 
-		 * System.out.println(mylist); }
-		 */
 	}
 
 	public static void launch(Scanner kb) {
@@ -63,42 +45,6 @@ public class JetsApplication {
 
 	}
 
-	/*
-	 * 
-	 * 
-	 * ArrayList jetsList = new ArrayList();
-	 * 
-	 * jetList.
-	 * 
-	 * CargoPlane cj = new CargoPlane("testplane", 0, 0, 0); //Instantiation
-	 * 
-	 * 
-	 * 
-	 * // For ArrayList List<Integer> list = new ArrayList<Integer>(); list.add(1);
-	 * list.add(3); System.out.println("ArrayList : " + list.toString());
-	 * 
-	 * 
-	 * // Creating a mutable list using Arrays.asList() List<Integer> list = new
-	 * ArrayList<>( Arrays.asList(1, 2, 3));
-	 * 
-	 * 
-	 * // Print the list System.out.println("List : " + list.toString());
-	 * 
-	 * list.add(5);
-	 * 
-	 * // Print the list System.out.println("Modified list : " + list.toString()); }
-	 * 
-	 * }}
-	 * 
-	 * /
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 */
 	public static int readUserInput(Scanner kb, int min, int max) { // long term goal is to check
 		int userNum = 0;
 		userNum = kb.nextInt();
@@ -151,19 +97,27 @@ public class JetsApplication {
 //********************************MENU METHODS*************************************************
 	}
 
-	private static void Dogfight(List<Set<String>> jets) {
+	private static void Dogfight(List jets) {
 		// makes all fighter jets fight.
 
 		for (int i = 0; i < jets.size(); i++) {
-			// enables fight ()
+			
+			if (jets.get(i) instanceof FighterJet) {
+				System.out.println("Fighter jet "+i );
+			}
 		}
 	}
 
 	private static void loadAllCargoJets(List<Set<String>> jets) {
-		// TODO Auto-generated method stub
+
 		for (int i = 0; i < jets.size(); i++) {
-			// enables load ()
+			
+			if (jets.get(i) instanceof CargoPlane) {
+				System.out.println("Cargo Jet "+i );
+			}
 		}
+		
+		
 	}
 
 	private static void viewJetWithLongestRange(List jets) { // User Story #7
@@ -214,11 +168,10 @@ public class JetsApplication {
 
 	}
 
-	private static void flyAllJets(List<Set<String>> jets) { // User Story #6 Requirement ***
+	private static void flyAllJets(List jets) { // User Story #6 Requirement ***
 
 		for (int i = 0; i < jets.size(); i++) {
-
-			System.out.println(jets.toString()); // print original set
+			((Jet) jets.get(i)).fly(); // print original set
 		}
 
 	}

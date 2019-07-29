@@ -16,9 +16,12 @@ public abstract class Jet {
 		this.speed = speed;
 		this.price = price;
 	}
-	public void fly() {
-	System.out.print(range/speed);
-	System.out.print(": amount of time(hrs) the jet can fly until it runs out of fuel. \n");
+	public void fly() {  // User Story #6 done!
+		double temp = speed/range;
+	System.out.print(model+" ");
+	String strDouble = String.format("%.2f", temp);
+	System.out.println(strDouble+": time(hrs) the jet can fly until it runs out of fuel. \n");
+	
 	}
 	public double getSpeedInMach() {
 		System.out.print(speed/MACH);
