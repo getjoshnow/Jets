@@ -11,7 +11,7 @@ public class JetsApplication {
 	public static void main(String[] args) { 		// meets User Story #1 requirement 
 
 		
-		//	Scanner kb = new Scanner(System.in);
+		Scanner kb = new Scanner(System.in);
 //		launch(kb);
 		
 //		Jet.FighterJet() fj = new Jet.FighterJet();
@@ -19,10 +19,13 @@ public class JetsApplication {
         List <CargoPlane> jetslist = new ArrayList<CargoPlane>(); 
         jetslist = AirField.populateAirfieldFromFile();
         
-  //      displayUserMenu(); // User Story #4 Requirements
+        displayUserMenu(); // User Story #4 Requirements
+        System.out.println();
         listFleet(jetslist); // User Story #5 Requirements
         System.out.println("program working");
-
+        viewJetWithLongestRange(jetslist);  //User Story #7
+        viewFastestJet(jetslist);//User Story #7
+        removeAJetFromFleet(jetslist, kb);
 /*		
 		List mylist = new ArrayList<>();
 		
@@ -51,7 +54,15 @@ public static void listFleet(List jets) { //User Story #5
 	} // needs to be tied to menu.
 	
 		
-}	
+public static void displayUserMenu() { //User Story #4 Requirements
+	System.out.println("**************Welcome to Jet selector.******************");
+System.out.println("Scanner\n" + "	1. List fleet\n" + "	2. Fly all jets\n" + "	3. View fastest jet\n"
+		+ "	4. View jet with longest range\n" + "	5. Load all Cargo Jets\n" + "	6. Dogfight!\n"
+		+ "	7. Add a jet to Fleet\n" + "	8. Remove a jet from Fleet\n" + "	9. Quit");
+System.out.print("Select an option within this menu: ");
+
+}
+
 		
 	/*	
 		
@@ -93,21 +104,6 @@ public static void listFleet(List jets) { //User Story #5
 
 	}
 
-	public static void listFleet(List jets) { User Story #5
-
-		for (int i = 0; i < jets.size(); i++) {
-			System.out.println(jets.get(i)); // print original set
-		}
-	} // needs to be tied to menu.
-
-	public static void displayUserMenu() { User Story #4 Requirements
-		System.out.println("**************Welcome to Jet selector.******************");
-		System.out.println("Scanner\n" + "	1. List fleet\n" + "	2. Fly all jets\n" + "	3. View fastest jet\n"
-				+ "	4. View jet with longest range\n" + "	5. Load all Cargo Jets\n" + "	6. Dogfight!\n"
-				+ "	7. Add a jet to Fleet\n" + "	8. Remove a jet from Fleet\n" + "	9. Quit");
-		System.out.print("Select an option within this menu: ");
-
-	}
 
 	public static int readUserInput(Scanner kb) {
 		// long term goal is to check for correct in put.
@@ -182,65 +178,58 @@ public static void listFleet(List jets) { //User Story #5
 			// enables load ()
 		}
 	}
+*/
+	private static void viewJetWithLongestRange(List jets) { //User Story #7
 
-	private static void viewJetWithLongestRange(List<Set<String>> jets) {
-		// TODO Auto-generated method stub
-		int maxRange = jets.getClass().getRange(0);
-		int maxIndex;
+		int maxRange = 0;
+		int maxIndex = 0;
+		int CurRange = 0;
 		for (int i = 0; i < jets.size(); i++) {
-			if (Range > maxRange) {
-				maxRange = jets.getRange();
-				maxIndex = jets.get(i);
+			CurRange = ((Jet) jets.get(i)).getRange();
+  			
+  			if (maxRange < CurRange) {
+ // 			System.out.println(maxRange);
+				maxIndex = i;   //makes  current highest range
+				maxRange = ((Jet) jets.get(i)).getRange();
 			}
-			System.out.println("The Longest Range Vehicle is:");
+		}//for loop
+			System.out.println("\n\nThe Longest Range Vehicle is: " + maxRange + " nautical miles");
 			System.out.println(jets.get(maxIndex));
-			// enables load ()
-		}
-	}
+		
+}
 
-	private static void viewFastestJet(List<Set<String>> jets) {
-		// TODO Auto-generated method stub
-		int maxSpeed = jets.getClass().getSpeed(0);
-		int maxIndex;
+	private static void viewFastestJet(List jets) {//User Story #7
+		double maxRange = 0;
+		int maxIndex = 0;
+		double CurRange = 0;
 		for (int i = 0; i < jets.size(); i++) {
-			if (speed > maxSpeed) {
-				maxSpeed = jets.getRange();
-				maxIndex = jets.get(i);
+			CurRange = ((Jet) jets.get(i)).getSpeed();
+  			
+  			if (maxRange < CurRange) {
+ // 			System.out.println(maxRange);
+				maxIndex = i;   //makes  current highest range
+				maxRange = ((Jet) jets.get(i)).getSpeed();
 			}
-			System.out.println("The Longest Range Vehicle is:");
+		}//for loop
+			System.out.println("\n\nThe Fastest Vehicle is: " + maxRange + " mph");
 			System.out.println(jets.get(maxIndex));
-			// enables load ()
-		}
-	}
-
-	private static void removeAJetFromFleet(List<Set<String>> jets) {
-		// TODO Auto-generated method stub
+		
+}
+	
+	
+	private static void removeAJetFromFleet(List jets, Scanner kb) { // works User Story #10
+		listFleet(jets);
 		System.out.print("Enter the number you would like to remove:");
 		int removeNum = kb.nextInt();
 
-		String removed = strList.remove(removeNum);
-		System.out.println(removed); // Alice
-
+		System.out.print("Removing Vehicle #"+removeNum); // Alice
+		jets.remove(removeNum);
+		System.out.print("Removed Vehicle #"+removeNum); // Alice
+		listFleet(jets);
+		
 	}
+/*
 
-private static void addAJetToFleet(List<Set<String>> jets, Scanner kb) {
-	// TODO Auto-generated method stub
-	System.out.print("\nWelcome to Airplane Add:\nEnter name of the plane:" );
-	String userPlaneName = kb.next();
-	System.out.print("\nEnter range of the plane:(whole numbers)" );
-	int userPlaneRange = kb.nextInt();
-	System.out.print("\nEnter speed of the plane in MPH" );
-	double userPlaneSpeed = kb.nextDouble();
-	System.out.print("\nEnter price of the plane:" );
-	long userPlanePrice = kb.nextLong();
-	
-	
-	 CargoPlane.(String model, int range, double speed, long price);
-
-	// (userPlaneName,userPlaneRange,userPlaneSpeed,userPlanePrice);
-	strList.add(0,"Queen of Hearts"); // command for adding jet(one variable)
-
-}
 
 private static void flyAllJets(List<Set<String>> jets) {
 
@@ -250,5 +239,6 @@ private static void flyAllJets(List<Set<String>> jets) {
     }
 }
 }
-}
 */
+}
+
