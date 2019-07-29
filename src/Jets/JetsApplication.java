@@ -63,7 +63,7 @@ public class JetsApplication {
 			listFleet(jets); // User Story #5 Requirements
 			break;
 		case 2:
-			flyAllJets(jets);
+			flyAllJets(jets, kb);
 			break;
 		case 3:
 			viewFastestJet(jets);
@@ -152,7 +152,7 @@ public class JetsApplication {
 				maxRange = ((Jet) jets.get(i)).getSpeed();
 			}
 		} // for loop
-		System.out.println("\nThe Fastest Vehicle is: "+maxRange +" MPH");
+		System.out.println("\nThe Fastest Vehicle is: " + maxRange + " MPH");
 		System.out.println(jets.get(maxIndex));
 
 	}
@@ -169,10 +169,20 @@ public class JetsApplication {
 
 	}
 
-	private static void flyAllJets(List jets) { // User Story #6 Requirement ***
+	private static void flyAllJets(List jets, Scanner kb) { // User Story #6 Requirement ***
 
-		for (int i = 0; i < jets.size(); i++) {
-			((Jet) jets.get(i)).fly(); // print original set
+		System.out.print("Would you like to fly all jets.(1) or select one to fly (2)?");
+		int flyjet = kb.nextInt();
+		if (flyjet == 1) {
+
+			for (int i = 0; i < jets.size(); i++) {
+				((Jet) jets.get(i)).fly(); // print original set
+			}
+		} else if (flyjet == 2) {
+			listFleet(jets);
+			System.out.print("Which jet would you like to fly?");
+			flyjet = kb.nextInt();
+			((Jet) jets.get(flyjet)).fly();
 		}
 
 	}
