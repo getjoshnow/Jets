@@ -23,8 +23,8 @@ public class AirField {
 		
  //works List jets = new ArrayList<>(); // collection arraylist of 4? categories?
       
-         List <CargoPlane> jetslist = new ArrayList<CargoPlane>(); // collection arraylist of 4? categories?
-         
+         List <Jet> jetslist = new ArrayList<Jet>(); // collection arraylist of 4? categories?
+        
          try (BufferedReader bufIn = new BufferedReader(new FileReader("JetList.txt"))) {
              // passing file reader
              String line;
@@ -41,10 +41,15 @@ public class AirField {
 						double tempD = Double.parseDouble(lineSplit[2]);
 						long tempP = Long.parseLong(lineSplit[3]);
 						
-						
+						if (lineSplit[4].equalsIgnoreCase("fighter")) {
 						// instanciate new jet
+						jetslist.add(new FighterJet(tempS, tempI,tempD, tempP));
+						}
+						else {
 						jetslist.add(new CargoPlane(tempS, tempI,tempD, tempP));
-             
+
+						}
+						
           /*   System.out.println(lineSplit[0]);
              System.out.println(lineSplit[1]);
              System.out.println(lineSplit[2]);

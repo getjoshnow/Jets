@@ -19,7 +19,7 @@ public class JetImpl extends Jet {  //User Story #9
 	}
 
 
-	private static void addAJetToFleet(List jets, Scanner kb) {
+	public static void addAJetToFleet(List jets, Scanner kb) {
 		
 		// TODO Auto-generated method stub
 		System.out.print("\nWelcome to Airplane Add:\nEnter name of the plane:" );

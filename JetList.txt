@@ -3,4 +3,4 @@
 767 (1981),850,12200.00,220000000,cargo  
 777 Triple Seven (1994),945,9700.00,300000000,cargo  
 Boeing 787 Dreamliner (2009),956,13620.00,292000000,cargo  
-asdf,0,0,0,cargo
+F-22 Raptor,0,0,0,fighter
