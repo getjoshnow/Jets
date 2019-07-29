@@ -7,4 +7,5 @@ public class FighterJet extends Jet implements CombatReady{
 		// TODO Auto-generated constructor stub
 	}
 
+	//ties to combat ready class.
 }

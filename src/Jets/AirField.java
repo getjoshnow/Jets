@@ -8,54 +8,59 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-/*On program startup, populate the AirField with at least 5 Jets of different types.
 
-These jets must be read from a text file, where each line in the file contains data for
- a single Jet object.
-
-This file exists at the root of your Eclipse project. It can be comma- or tab-separated; 
-either implementation is acceptable.
-The method to parse a file into Jet objects should return a List<Jet>. Its parameter 
-can be a String file name.
-Remember to use String.split(regex) to break each line in the file into data to create
- an individual jet.
-*/
 public class AirField {
 
-	public static void main(String[] args) {
-		
-	}
-	public AirField() { // no args 
-		
-	}
-	
-	public static List<Set<String>> populateAirfieldFromFile() {
-		
-	//	private Jet[] jets = new Jet[];
+/*	public static void main(String[] args) {
+        List <CargoPlane> jetslist = new ArrayList<CargoPlane>(); //User Story #2 requirements
 
-         List<Set<String>> jets = new ArrayList<>(); // collection arraylist of 4? categories?
-
-         for (int i = 0; i < jets.size(); i++) {
-             Set<String> shL = new TreeSet<>(); // tree set importing original set
-             jets.add(shL);
-         }
-         // tree set
+		
+        jetslist = populateAirfieldFromFile();	 //meets User Story #3 requirement from text
+		
+		}
+*/
+	public static List populateAirfieldFromFile() {
+		
+ //works List jets = new ArrayList<>(); // collection arraylist of 4? categories?
+      
+         List <CargoPlane> jetslist = new ArrayList<CargoPlane>(); // collection arraylist of 4? categories?
+         
          try (BufferedReader bufIn = new BufferedReader(new FileReader("JetList.txt"))) {
              // passing file reader
              String line;
              while ((line = bufIn.readLine()) != null) {// give me the string into line variable
- 	            	String[] planeRecord = line.split(", ");
- 	            	
- 		            System.out.println(planeRecord[0]);
-            	// jets.get(index).add(line);
+					// break up string 
+
+						String delims = "[,]+";
+						String[] lineSplit = line.split(delims);
+			
+						//public Jet(String model, int range, double speed, long price) {
+						//convert happens here.
+						String tempS = lineSplit[0]; 
+						int tempI = Integer.parseInt(lineSplit[1]);
+						double tempD = Double.parseDouble(lineSplit[2]);
+						long tempP = Long.parseLong(lineSplit[3]);
+						
+						
+						// instanciate new jet
+						jetslist.add(new CargoPlane(tempS, tempI,tempD, tempP));
+             
+          /*   System.out.println(lineSplit[0]);
+             System.out.println(lineSplit[1]);
+             System.out.println(lineSplit[2]);
+             System.out.println(lineSplit[3]);
+             */
              }
-             System.out.println();
          } catch (IOException e) {
              System.err.println(e);
          }
          
-
-         return jets;
+         return jetslist;
  }
 	
+//Nothing Relevant below ************************************************************************
+	
+	public AirField() { // no Argos-constructor 
+		
+	}
 }

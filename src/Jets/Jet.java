@@ -2,6 +2,7 @@ package Jets;
 
 public abstract class Jet {
 
+	private static final int MACH = 1234; //MACH IS Km/h
 	private String model;
 	private int range;
 	private double speed;
@@ -20,10 +21,77 @@ public abstract class Jet {
 	System.out.print(": amount of time(hrs) the jet can fly until it runs out of fuel. \n");
 	}
 	public double getSpeedInMach() {
-		
-		
+		System.out.print(speed/MACH);
+		System.out.println(" The Speed ");
 		return 0.0;
 	}
+	
+	
+//ENCAPSulation Methods.  ***** GENERIC BELOW****************************************************	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//ENCAPSulation Methods.  ***** BELOW ****************************************************	
 	/**
 	 * @return the model
 	 */
